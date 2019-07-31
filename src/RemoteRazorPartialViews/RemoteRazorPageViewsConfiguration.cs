@@ -13,7 +13,7 @@ namespace RemoteRazorPartialViews
     {
         public static int NumberOfRetries = 2;
         public static int WaitTimeInMilliseconds = 200;
-        public static AsyncRetryPolicy<HttpResponseMessage> RetryPolicy =
+        public static readonly AsyncRetryPolicy<HttpResponseMessage> DefaultRetryPolicy =
             Policy
               .Handle<HttpRequestException>()
               .OrResult<HttpResponseMessage>(r => new[]

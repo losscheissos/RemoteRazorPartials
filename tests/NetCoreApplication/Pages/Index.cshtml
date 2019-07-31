@@ -14,26 +14,30 @@
     //You can customize the extension method here as well
     RemoteRazorPartialViews.RemoteRazorPageViewsConfiguration.NumberOfRetries = 5;
     RemoteRazorPartialViews.RemoteRazorPageViewsConfiguration.WaitTimeInMilliseconds = 100;
-
-    //Or even define a complete custom Polly Policy
-    //RemoteRazorPartialViews.RemoteRazorPageViewsConfiguration.RetryPolicy = Policy
-    //              .Handle<HttpRequestException>()
-    //              .OrResult<HttpResponseMessage>(r => httpStatusCodesWorthRetrying.Contains(r.StatusCode))
-    //              .WaitAndRetryAsync(
-    //                    retryCount: NumberOfRetries, // Retry 2 times
-    //                    sleepDurationProvider: attempt => TimeSpan.FromMilliseconds(200),
-    //                    onRetry: (responseDelegate, calculatedWaitDuration, retry, context) =>
-    //                    {
-    //                        telemetryClient.TrackTrace($"Some custom logging method");
-    //                        if (responseDelegate?.Exception != null)
-    //                        {
-    //                            telemetryClient.TrackException(responseDelegate.Exception);
-    //                        }
-    //                        else if (responseDelegate?.Result != null)
-    //                        {
-    //                            LogNegativeStatusCode(responseDelegate);
-    //                        }
-    //                    });
 }
 
  @await  Html.RenderRemotePartialAsync(new Uri("https://google.com"))
+
+
+@{
+//Or you can even define a custom Retry Policy
+//var policy = Policy
+//              .Handle<HttpRequestException>()
+//              .OrResult<HttpResponseMessage>(r => httpStatusCodesWorthRetrying.Contains(r.StatusCode))
+//              .WaitAndRetryAsync(
+//                    retryCount: NumberOfRetries, // Retry 2 times
+//                    sleepDurationProvider: attempt => TimeSpan.FromMilliseconds(200),
+//                    onRetry: (responseDelegate, calculatedWaitDuration, retry, context) =>
+//                    {
+//                        telemetryClient.TrackTrace($"Some custom logging method");
+//                        if (responseDelegate?.Exception != null)
+//                        {
+//                            telemetryClient.TrackException(responseDelegate.Exception);
+//                        }
+//                        else if (responseDelegate?.Result != null)
+//                        {
+//                            LogNegativeStatusCode(responseDelegate);
+//                        }
+//                    });
+//await  Html.RenderRemotePartialAsync(new Uri("https://google.com"), policy)
+}
