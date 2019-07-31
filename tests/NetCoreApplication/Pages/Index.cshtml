@@ -16,8 +16,9 @@
     RemoteRazorPartialViews.RemoteRazorPageViewsConfiguration.WaitTimeInMilliseconds = 100;
 }
 
- @await  Html.RenderRemotePartialAsync("https://google.com")
-
+<div style="border:solid; border-color:red;">
+    @await Html.RenderRemotePartialAsync("http://sueddeutsche.de/")
+</div>
 
 @{
 //Or you can even define a custom Retry Policy
@@ -39,5 +40,5 @@
 //                            LogNegativeStatusCode(responseDelegate);
 //                        }
 //                    });
-//await  Html.RenderRemotePartialAsync(new Uri("https://google.com"), policy)
+//await  Html.RenderRemotePartialAsync(new Uri("http://sueddeutsche.de/"), policy)
 }
