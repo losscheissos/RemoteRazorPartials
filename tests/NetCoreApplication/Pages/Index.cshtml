@@ -1,13 +1,43 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Remote Razor Partial Views";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>This is a sample application illustrating the usage of the Extension method.</p>
+    <p>For details check <a href="https://github.com/losscheissos/RemoteRazorPartials" target="_blank">GitHub</a></p>
 </div>
 
+@{ 
+    //You can customize the extension method here as well
+    RemoteRazorPartialViews.RemoteRazorPageViewsConfiguration.NumberOfRetries = 5;
+    RemoteRazorPartialViews.RemoteRazorPageViewsConfiguration.WaitTimeInMilliseconds = 100;
+}
 
  @await  Html.RenderRemotePartialAsync(new Uri("https://google.com"))
+
+
+@{
+//Or you can even define a custom Retry Policy
+//var policy = Policy
+//              .Handle<HttpRequestException>()
+//              .OrResult<HttpResponseMessage>(r => httpStatusCodesWorthRetrying.Contains(r.StatusCode))
+//              .WaitAndRetryAsync(
+//                    retryCount: NumberOfRetries, // Retry 2 times
+//                    sleepDurationProvider: attempt => TimeSpan.FromMilliseconds(200),
+//                    onRetry: (responseDelegate, calculatedWaitDuration, retry, context) =>
+//                    {
+//                        telemetryClient.TrackTrace($"Some custom logging method");
+//                        if (responseDelegate?.Exception != null)
+//                        {
+//                            telemetryClient.TrackException(responseDelegate.Exception);
+//                        }
+//                        else if (responseDelegate?.Result != null)
+//                        {
+//                            LogNegativeStatusCode(responseDelegate);
+//                        }
+//                    });
+//await  Html.RenderRemotePartialAsync(new Uri("https://google.com"), policy)
+}
