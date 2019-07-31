@@ -18,27 +18,28 @@
 
 <div style="border:solid; border-color:red;">
     @await Html.RenderRemotePartialAsync("http://sueddeutsche.de/")
-</div>
 
-@{
-//Or you can even define a custom Retry Policy
-//var policy = Policy
-//              .Handle<HttpRequestException>()
-//              .OrResult<HttpResponseMessage>(r => httpStatusCodesWorthRetrying.Contains(r.StatusCode))
-//              .WaitAndRetryAsync(
-//                    retryCount: NumberOfRetries, // Retry 2 times
-//                    sleepDurationProvider: attempt => TimeSpan.FromMilliseconds(200),
-//                    onRetry: (responseDelegate, calculatedWaitDuration, retry, context) =>
-//                    {
-//                        telemetryClient.TrackTrace($"Some custom logging method");
-//                        if (responseDelegate?.Exception != null)
-//                        {
-//                            telemetryClient.TrackException(responseDelegate.Exception);
-//                        }
-//                        else if (responseDelegate?.Result != null)
-//                        {
-//                            LogNegativeStatusCode(responseDelegate);
-//                        }
-//                    });
-//await  Html.RenderRemotePartialAsync(new Uri("http://sueddeutsche.de/"), policy)
-}
+    @{
+        //Or you can even define a custom Retry Policy
+        //var policy = Policy
+        //              .Handle<HttpRequestException>()
+        //              .OrResult<HttpResponseMessage>(r => httpStatusCodesWorthRetrying.Contains(r.StatusCode))
+        //              .WaitAndRetryAsync(
+        //                    retryCount: NumberOfRetries, // Retry 2 times
+        //                    sleepDurationProvider: attempt => TimeSpan.FromMilliseconds(200),
+        //                    onRetry: (responseDelegate, calculatedWaitDuration, retry, context) =>
+        //                    {
+        //                        telemetryClient.TrackTrace($"Some custom logging method");
+        //                        if (responseDelegate?.Exception != null)
+        //                        {
+        //                            telemetryClient.TrackException(responseDelegate.Exception);
+        //                        }
+        //                        else if (responseDelegate?.Result != null)
+        //                        {
+        //                            LogNegativeStatusCode(responseDelegate);
+        //                        }
+        //                    });
+        //await  Html.RenderRemotePartialAsync(new Uri("http://sueddeutsche.de/"), policy)
+    }
+
+</div>
